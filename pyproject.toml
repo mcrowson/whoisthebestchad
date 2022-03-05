@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "whoisthebestchad"
+version = "0.1.0"
+description = "source of truth of superior chadliness"
+authors = ["Matthew Crowson <hey@matthewcrowson.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^2.0.3"
+zappa = "^0.54.1"
+boto3 = "^1.21.13"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
