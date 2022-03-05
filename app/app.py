@@ -48,8 +48,8 @@ def index():
         ].replace('"', "")
 
         chad_imgs = {
-            "kosie": "https://s3.amazonaws.com/static.whoisthebestchad.com/dog1.jpg",
-            "barbe": "https://s3.amazonaws.com/static.whoisthebestchad.com/dog2.jpg",
+            "kosie": "https://s3.amazonaws.com/static.whoisthebestchad.com/kosie.jpg",
+            "barbe": "https://s3.amazonaws.com/static.whoisthebestchad.com/barbe.jpg",
         }
 
         img = chad_imgs.get(chosen_chad)
