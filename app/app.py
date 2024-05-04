@@ -2,6 +2,12 @@ from flask import Flask, request, redirect
 import boto3
 import os
 
+CHAD_IMGS = {
+    "kosie": "https://s3.amazonaws.com/static.whoisthebestchad.com/chadk.jpg",
+    "barbe": "https://s3.amazonaws.com/static.whoisthebestchad.com/chadb.jpg",
+    "country": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Flag_of_Chad.svg/1599px-Flag_of_Chad.svg.png",
+}
+
 flask_app = Flask(__name__)
 
 
@@ -10,7 +16,7 @@ def index():
     client = boto3.client("route53")
     if chosen_chad := request.args.get('chosen_chad'):
         # set the chad
-        if chosen_chad not in ("kosie", "barbe"):
+        if chosen_chad not in CHAD_IMGS.keys():
             return "Invalid Chad Supplied", 400
 
         response = client.change_resource_record_sets(
@@ -47,12 +53,7 @@ def index():
             "Value"
         ].replace('"', "")
 
-        chad_imgs = {
-            "kosie": "https://s3.amazonaws.com/static.whoisthebestchad.com/chadk.jpg",
-            "barbe": "https://s3.amazonaws.com/static.whoisthebestchad.com/chadb.jpg",
-        }
-
-        img = chad_imgs.get(chosen_chad)
+        img = CHAD_IMGS.get(chosen_chad)
         return f"""
             <html><body><img src="{img}"/></body></html>
         """
